@@ -21,15 +21,32 @@ export type ChartOptions = {
   styleUrls: ['./dash-board.component.css']
 })
 export class DashBoardComponent {
+
+  public Datos:number[]=[]
+  public Fechas:string[]=[]
   @ViewChild("chart") cahart: ChartComponent;
   public chartOptions: Partial<ChartOptions>;
 
-  constructor() {
+  constructor(public movimientosService:MovimientosService) {
+
+    this.movimientosService.getMovimientos("movimientos/api/v1/movimientos/").subscribe(
+      (res)=>{
+        
+        for (let index = 0; index < res.length; index++) {
+          const element  = res[index];
+          console.log(element)
+          console.log(Number(element["valor"].replaceAll(".","")))
+          this.Datos.push(Number(element["valor"].replaceAll(".","")))
+          this.Fechas.push(element["fecha"])
+        }
+      }
+    )
+
     this.chartOptions = {
       series: [
         {
-          name: "My-series",
-          data: [10, 41, 35, 51, 49, 62, 69, 91, 148]
+          name: "Valor",
+          data: this.Datos
         }
       ],
       chart: {
@@ -37,10 +54,10 @@ export class DashBoardComponent {
         type: "bar"
       },
       title: {
-        text: "My First Angular Chart"
+        text: "Movimientos"
       },
       xaxis: {
-        categories: ["Jan", "Feb",  "Mar",  "Apr",  "May",  "Jun",  "Jul",  "Aug", "Sep"]
+        categories: this.Fechas
       }
     };
   }

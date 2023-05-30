@@ -1,1 +1,53 @@
-<p>movimientos works!</p>
+<div class= "m-0 vh-100 row justify-content-center align-items-center container-fluid">
+
+<div class= "col_auto p-5 row">
+  <form [formGroup]="movimientosForm" (ngSubmit)="sendMovimiento()" novalidate >
+    <!-- Name input -->
+    <div class="form-outline mb-4 col-2">
+      <input type="text" id="valor" class="form-control" formControlName="valor" />
+      <label class="form-label" for="form4Example1">Valor</label>
+    </div>
+  
+    <!-- Tipo input -->
+    <div class="form-outline mb-4 col-2">
+        <select class="form-control select"  id="tipo" formControlName="tipo">
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+            <option value="4">Four</option>
+            <option value="5">Five</option>
+            <option value="6">Six</option>
+            <option value="7">Seven</option>
+            <option value="8">Eight</option>
+        </select>
+        <label class="form-label" for="inlineFormSelectPref">Tipo</label>
+    </div>
+  
+    <!-- Descipcion input -->
+    <div class="form-outline mb-4 col-2">
+      <textarea class="form-control" id="descripcion" rows="4" formControlName="descripcion"></textarea>
+      <label class="form-label" for="form4Example3">Descripción</label>
+    </div>
+    <!-- Cuenta origen input -->
+    <div class="form-outline mb-4 col-2">
+        <input type="text" id="cuentaOrigen" class="form-control" formControlName="cuentaOrigen"/>
+        <label class="form-label" for="form4Example1">Cuenta origen</label>
+    </div>
+    <!-- Cuenta destino input -->
+    <div class="form-outline mb-4 col-2">
+        <input type="text" id="cuentaDestino" class="form-control" formControlName="cuentaDestino"/>
+        <label class="form-label" for="form4Example1">Cuenta destino</label>
+      </div>
+
+     <!-- Cuenta destino input --> 
+     <div class="form-outline mb-4 col-2">
+        <input type="text" id="fecha" class="form-control" formControlName="fecha"/>
+        <label class="form-label" for="form4Example1">Fecha</label>
+      </div>
+
+    <!-- Submit button -->
+    <button type="submit" class="btn btn-primary btn-block mb-4 col-2">Send</button>
+
+  </form>
+</div>
+</div>

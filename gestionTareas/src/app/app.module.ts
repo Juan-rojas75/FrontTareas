@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -11,6 +13,8 @@ import { MovimientosComponent } from './components/movimientos/movimientos.compo
 // Servicios
 import { MovimientosService } from "./services/movimientos.service";
 import { NgApexchartsModule } from 'ng-apexcharts';
+//MOdulos
+import { HttpClientModule } from "@angular/common/http";
 
 
 @NgModule({
@@ -24,9 +28,12 @@ import { NgApexchartsModule } from 'ng-apexcharts';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgApexchartsModule
+    ReactiveFormsModule,
+    NgApexchartsModule,
+    HttpClientModule
   ],
   providers: [MovimientosService],
+  
   bootstrap: [AppComponent]
 })
 export class AppModule { }
